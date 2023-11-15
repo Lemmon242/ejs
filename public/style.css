@@ -1,7 +1,10 @@
+body{
+    background-color: aqua;
+}
 .container{
     width: 90%;
     margin: auto;
-    background-color: aqua;
+   
     
    }
    nav{
@@ -35,4 +38,8 @@
     font-size: x-large;
     
     
+   }
+
+   .stv{
+    background-color: blueviolet;
    }

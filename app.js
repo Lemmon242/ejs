@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const connect = require("./db/mongoDB");
 require("dotenv/config");
 const TASKS = require('./model/taskModel')
+const taskRouter = require('./router/taskRouter')
+
 
 // custom middlewears
 app.set("view engine", "ejs");
@@ -96,37 +98,7 @@ app.use(express.static("public"));
 //   },
 // ];
 // api
-app.post('/api/v1/create', async(req,res)=>{
-  console.log(req.body);
-  const newTask = new TASKS(req.body)
-
-  try{
-    await newTask.save();
-    res.status(201).redirect('/')
-
-  }catch(error){
-    console.log(error);
-  }
-});
-
-// route params
-app.get('/api/v1/route/:id',async(req,res)=>{
-  const id = req.params.id
-  console.log(id);
-  try{
-    // const data = await TASKS.findByIdAndDelete({_id : id})
-    const result = await TASKS.findById(id)
-    res.status(200).render('singlepage' , {title:'single || page',task:result})
-    
-
-
-  }catch(error){
-    console.log(error);
-  }
-
-})
-
-
+ app.use('/api/v1',taskRouter)
 
 //page routes
 app.get("/", async(req, res) => {
