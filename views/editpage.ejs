@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/header.ejs')  %>
+
+<body>
+    <%- include('../partials/nav.ejs')  %>
+    <div class="fom">
+    <h1>Edit Task</h1>
+        <form class="form" action="/api/v1/edit/<%= task._id %>" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="<%= task.name %>">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" value="<%= task.title %>">
+            <label for="task">Task</label>
+           <input type="text" id="name" name="task" value="<%= task.task  %>">
+           <br/><br/>
+            <button type="submit">Update Task</button>
+         </form>
+    
+    </div>
+     <%- include('../partials/footer.ejs')  %>
+</body>
+</html>
